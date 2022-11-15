@@ -1,3 +1,9 @@
+:root {
+  --light: #f5f5f5;
+  --dark: #28292c;
+  --dark-background: #323747;
+}
+
 .App {
   text-align: center;
 }
@@ -13,20 +19,98 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+body.dark {
+  background-color: var(--dark-background);
+}
+
+#app-title.dark {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#app-title.light {
+  color: var(--dark-background);
 }
+
+.map-snmb {
+  width: 90vw;
+  height: 80vh;
+  margin: auto;
+  border-radius: 15px;
+}
+
+.toggle-switch-container {
+  text-align: right;
+  width: 90vw;
+  margin: auto;
+  margin-bottom: 1em;
+}
+
+.toggle-switch {
+  position: relative;
+  margin-left: auto;
+  width: 100px;
+  height: 60px;
+}
+
+.toggle-switch-label {
+  position: absolute;
+  left: -2em;
+  width: 100%;
+  height: 50px;
+  background-color: var(--dark);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.input-switch {
+  position: absolute;
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  transition: 0.3s;
+  left: 0;
+}
+
+.input-switch:checked ~ .slider {
+  background-color: #f5f5f5;
+  width: 103%;
+  height: 104%;
+  border-radius: 50px;
+  top: -1px;
+  transition: 0.3s;
+  left: -1px;
+  border: 1px solid #e5e5e5;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 7px;
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  box-shadow: inset 14px -1px 0px 0px var(--light);
+  background-color: var(--dark);
+  transition: 0.3s;
+}
+
+.input-switch:checked ~ .slider::before {
+  transform: translateX(47px);
+  background-color: #ffce00;
+  box-shadow: none;
+  top: 5px;
+  left: 9px;
+  width: 42px;
+  height: 42px;
+}
+
 
 @keyframes App-logo-spin {
   from {
