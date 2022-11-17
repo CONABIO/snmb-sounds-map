@@ -6,6 +6,9 @@
 
 .App {
   text-align: center;
+  width: 80vw;
+  margin: auto;
+  padding-bottom: 5em;
 }
 
 .App-logo {
@@ -24,26 +27,81 @@ body.dark {
   background-color: var(--dark-background);
 }
 
+body.light {
+  background-color: #ebebeb;
+}
+
+.anp-name {
+  min-height: 2em;
+  text-align: left;
+  width: 75vw;
+  margin: auto;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.anp-name.dark {
+  color: rgb(227, 227, 227);
+}
+
+.anp-name.light {
+  color: #5d626fba;
+}
+
+#app-title {
+  text-align: left;
+}
+
 #app-title.dark {
-  color: white;
+  color: #ffc1cb;
 }
 
 #app-title.light {
-  color: var(--dark-background);
+  color: #475b7bb3;
 }
 
 .map-snmb {
-  width: 90vw;
+  width: 80vw;
   height: 80vh;
   margin: auto;
   border-radius: 15px;
 }
 
-.toggle-switch-container {
+.map-snmb.dark {
+  border: 2px solid pink;
+}
+
+.map-snmb.light {
+  border: 2px solid #26e1ee52;
+}
+
+.daytime-name {
+  line-height: 50px;
+  vertical-align: middle;
+  font-weight: 700;
+}
+
+.daytime-name.light {
+  width: 40px;
   text-align: right;
-  width: 90vw;
-  margin: auto;
+  color: #79859d;
+}
+
+.daytime-name.dark {
+  color: white;
+}
+
+.toggle-switch-container {
   margin-bottom: 1em;
+  display: flex;
+  justify-content: flex-end;
+  width: 225px;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.toggle-switch-container.dark {
+  width: 200px;
 }
 
 .toggle-switch {
@@ -55,7 +113,7 @@ body.dark {
 
 .toggle-switch-label {
   position: absolute;
-  left: -2em;
+  left: 0;
   width: 100%;
   height: 50px;
   background-color: var(--dark);
