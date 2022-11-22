@@ -26,6 +26,7 @@ function App() {
   const toggleTime = () => {
     let body = document.getElementsByTagName('body');
     let title = document.getElementById("app-title")
+    let dayOrNight = document.getElementById("day-night-toggle");
 
     if(!day) {
       // title
@@ -44,6 +45,13 @@ function App() {
       body[0].classList.add('dark');
       body[0].classList.remove('light');
     }
+
+    if(audio) {
+      audio.pause();
+      setAudio(null);
+      playSound(dayOrNight,nowPlaying)
+    }
+    
     setDay(!day)
   }
 
@@ -77,8 +85,7 @@ function App() {
     
   }
 
-  const onClickAnp = async (e) => {
-
+  const playSound = async (dayOrNight, anpName) => {
     let response = await fetch('https://sipecamdata.conabio.gob.mx/snmbgraphql/',{
       method: 'post',
       headers: {
@@ -89,8 +96,30 @@ function App() {
         query {
           allAnpAudioSamples(filter: {
             snmbNombreAnp: {
-              equalTo: "${e.target.feature.properties.NOMBRE}"
+              equalTo: "${anpName}",
+              
             },
+            ${
+              dayOrNight.checked ? 
+              `sampleHour: {
+                greaterThan: 6,
+                lessThan: 18
+              }` : 
+              `
+              or: [
+                {
+                  sampleHour: {
+                    lessThan: 6
+                  }
+                },
+                {
+                  sampleHour: {
+                    greaterThan: 18
+                  }
+                }
+              ]
+              `
+            }
           }, first: 1){
             edges {
               node {
@@ -109,11 +138,18 @@ function App() {
         .replace('wav','mp3')
       setAudio(new Audio(audioMp3));
       setIsPlaying(true);
-      setPlay(e.target.feature.properties.NOMBRE)
+      setPlay(anpName)
     } else {
       setIsPlaying(false);
       setPlay(null)
     }
+  }
+
+  const onClickAnp = async (e) => {
+
+    let dayOrNight = document.getElementById("day-night-toggle");
+
+    playSound(dayOrNight,e.target.feature.properties.NOMBRE);
   }
 
   const onEachFeature = (feature,layer) => {
@@ -135,7 +171,8 @@ function App() {
         </div>
         <div className="toggle-switch">
             <label className='toggle-switch-label'>
-                <input 
+                <input
+                  id="day-night-toggle" 
                   checked={day}
                   onChange={() => toggleTime()}
                   className='input-switch' 
