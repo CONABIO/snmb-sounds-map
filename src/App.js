@@ -212,6 +212,11 @@ function App() {
   const onClickAnp = async (e) => {
 
     let dayOrNight = document.getElementById("day-night-toggle");
+    
+    setIsPlaying(false);
+    setPlay(null);
+    setVegetation(null);
+    setHour(null);
 
     playSound(dayOrNight,e.target.feature.properties.NOMBRE);
   }
