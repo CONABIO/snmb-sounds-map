@@ -122,7 +122,8 @@ function App() {
   };
 
   const showLabel = (e) => {
-    if(anpAudio.includes(e.target.feature))
+    if(e.target.options.fillColor === "#02e3be" || 
+    e.target.options.fillColor === "#ff8acc")
       setANP(e.target.feature.properties.NOMBRE);
     else
       setANP(e.target.feature.properties.NOMBRE + " (sin audios)");
