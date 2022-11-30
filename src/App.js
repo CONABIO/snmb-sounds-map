@@ -233,7 +233,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <h1 id="app-title" className={day ?  'light' : 'dark'}>Sonidos SNMB de áreas protegidas</h1>
+        <h1 id="app-title" className={day ?  'light' : 'dark'}>Paisajes Sonoros en Áreas Naturales Protegidas de México</h1>
       </div>
       <div className={`toggle-switch-container ${day ?  '' : 'dark'}`}>
         <div className={`daytime-name dark`}>
@@ -282,6 +282,7 @@ function App() {
           style={style}
           onEachFeature={onEachFeature} />
       </MapContainer>
+      <div className='source'>Fuente: Sistema Nacional de Monitoreo de la Biodiversidad. CONANP, FMCN, CONABIO, CONFOR. 2014-2018.</div>
     </div>
   );
 }

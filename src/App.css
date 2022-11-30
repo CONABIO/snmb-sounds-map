@@ -57,6 +57,12 @@ body.light {
   font-size: 18px;
 }
 
+.source {
+  color: #78869c;
+  margin-top: 2em;
+  font-size: 14px;
+}
+
 .anp-name.dark {
   color: rgb(227, 227, 227);
 }
