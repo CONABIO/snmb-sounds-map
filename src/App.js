@@ -194,10 +194,9 @@ function App() {
     let data = await response.json();
     
     if(data.data.allAnpAudioSamples.edges.length) {
-      let audioMp3 = data.data.allAnpAudioSamples.edges[0].node.snmbArchivoPath
+      let audioWAV = data.data.allAnpAudioSamples.edges[0].node.snmbArchivoPath
         .replace('/LUSTRE/sacmod/snmb_data/','https://monitoreo.conabio.gob.mx/snmb_pics/')
-        .replace('wav','mp3')
-      setAudio(new Audio(audioMp3));
+      setAudio(new Audio(audioWAV));
       setIsPlaying(true);
       setPlay(anpName)
       setVegetation(data.data.allAnpAudioSamples.edges[0].node.snmbVegetacionTipo);
