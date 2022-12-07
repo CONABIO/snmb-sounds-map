@@ -158,27 +158,11 @@ function App() {
               equalTo: "${anpName}",
               
             },
-            ${
-              dayOrNight.checked ? 
-              `sampleHour: {
-                greaterThan: 9,
-                lessThan: 20
-              }` : 
-              `
-              or: [
-                {
-                  sampleHour: {
-                    lessThan: 9
-                  }
-                },
-                {
-                  sampleHour: {
-                    greaterThan: 20
-                  }
-                }
-              ]
-              `
-            }
+            repPeriod: {
+              equalTo: "${
+                dayOrNight.checked ? "day" : "night"
+              }"
+            },
           }, first: 1){
             edges {
               node {
@@ -281,7 +265,7 @@ function App() {
           style={style}
           onEachFeature={onEachFeature} />
       </MapContainer>
-      <div className='source'>Fuente: Sistema Nacional de Monitoreo de la Biodiversidad. CONANP, FMCN, CONABIO, CONFOR. 2014-2018.</div>
+      <div className='source'>Fuente: Sistema Nacional de Monitoreo de la Biodiversidad. CONANP, FMCN, CONABIO, CONAFOR. 2014-2018.</div>
     </div>
   );
 }
